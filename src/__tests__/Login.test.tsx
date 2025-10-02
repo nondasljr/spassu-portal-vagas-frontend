@@ -20,7 +20,7 @@ describe('Login', () => {
     render(<BrowserRouter><Login /></BrowserRouter>)
     fireEvent.change(screen.getByLabelText(/usuário/i), { target: { value: 'foo' } })
     fireEvent.change(screen.getByLabelText(/senha/i), { target: { value: 'bar' } })
-    fireEvent.click(screen.getByText(/entrar/i))
+    fireEvent.click(screen.getByRole('button', { name: /entrar/i }))
 
     await waitFor(() => {
       expect(screen.getByRole('alert')).toHaveTextContent('Usuário ou senha inválidos.')
